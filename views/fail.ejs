@@ -1,0 +1,57 @@
+<html>
+<head>
+    <% include ./head %>
+    
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <% include ./header %>
+        </header>
+    
+        <div class="page-header text-center">
+            <h1> Welcome <%= user[0].username %> </h1>
+            <!-- <a href="/logout" class="btn btn-default btn-sm">Logout</a> -->
+        </div>
+
+        <div class="row">
+
+            <!-- LOCAL INFORMATION -->
+            <div class="col-sm-4 ">
+                <div class="well">
+                    <h3><span class="fa fa-user"></span> User Information </h3>
+    
+                        <p class="big">
+                            <strong>id</strong>: <%= user[0].user_id %><br>
+                            <strong>username</strong>: <%= user[0].username %><br>
+                            <strong>uploaded file</strong>: <%= user.length %><br>
+                            <!-- <strong>password</strong>: <%= user.password %> -->
+                        </p>
+    
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                    <h3><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Download Fail </h3>
+                    <p>
+                        <br>
+                        Both hash value are not equal. File from server is not the original. 
+                        <br>
+                    </p>
+            </div>
+
+        </div>
+
+        <br><br><br>
+
+        <footer>
+            <% include ./footer %>
+        </footer>
+
+    </div>
+
+</body>
+</html>

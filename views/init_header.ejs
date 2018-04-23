@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+        
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+                    Blockchain for Distributed Multimedia Evidences
+                </a>
+        
+                
+                
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/profile/<%= user.id %>/upload">Upload</a></li>
+                <li><a href="#">Verify</a></li>
+                <!-- <li> <%= user.username %> </li> -->
+                <li><a href="/profile/<%= user.id %>"> <%= user.username %> </a></li>
+                <li><a href="/logout"> Log out </a></li>
+            </ul>
+            
+        </div>
+</nav>

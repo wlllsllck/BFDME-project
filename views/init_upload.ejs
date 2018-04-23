@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <% include ./head %>
+    </style>
+    <script type="text/javascript" src= "/javascripts/upload.js"></script>
+</head>
+
+<body>
+<div class="container">
+	<header>
+		<% include ./init_header %>
+    </header>
+    
+        <div class="row">
+            <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-sm-6 col-sm-offset-6">
+                        <!-- <span class="glyphicon glyphicon-custom glyphicon-cloud-upload"></span> -->
+                        <h2>File Uploader</h2>
+                        <h4>Blockchain</h4>
+                        <br>
+                    </div>
+                <!-- <div class="progress">
+                    <div class="progress-bar" role="progressbar"></div>
+                </div> -->
+                    <div class="col-sm-6 ">
+                            <div class="well">
+                                <h3><span class="fa fa-user"></span> User Information </h3>
+                                    <p>
+                                        <strong>id</strong>: <%= user.id %><br>
+                                        <strong>username</strong>: <%= user.username %><br>
+                                        <!-- <strong>password</strong>: <%= user.password %> -->
+                                    </p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 ">
+
+                        <form action="/upload" class="UploadFile" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label> user_id </label>
+                                <input disabled="disabled" type="number" class="form-control user_id" value= <%= user.id %> >
+                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            </div>
+                            <div class="form-group">
+                                <label> username </label>
+                                <input disabled="disabled" type="text" class="form-control username" value="<%= user.username %>">
+                                <!-- <small class="form-text text-muted">e.g. 2018, 2017, 2016, ...</small> -->
+                            </div>
+                            <div class="form-group">
+                                <label>Files</label>
+                                <input type="file" class="form-control files" id="files" name="file">
+                            </div>
+                            <br>
+                            <br>
+                            <input type="submit" value="Upload">  
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+          
+        
+        <footer>
+            <% include ./footer %>
+        </footer>
+</div>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+</body>
+</html>

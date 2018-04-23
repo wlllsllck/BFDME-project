@@ -1,0 +1,70 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+	<% include ./head %>
+	
+	p.big {
+		line-height: 1.8;
+	}
+	
+	</style>
+</head>
+
+<body>
+<div class="container">
+	<header>
+		<% include ./header %>
+	</header>
+
+	<div class="page-header text-center">
+		<h1> Welcome <%= user[0].username %> </h1>
+		<!-- <a href="/logout" class="btn btn-default btn-sm">Logout</a> -->
+	</div>
+
+	<div class="row">
+
+		<!-- LOCAL INFORMATION -->
+		<div class="col-sm-4 ">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> User Information </h3>
+
+					<p class="big">
+						<strong>id</strong>: <%= user[0].user_id %><br>
+						<strong>username</strong>: <%= user[0].username %><br>
+						<strong>uploaded file</strong>: <%= user.length %><br>
+						<!-- <strong>password</strong>: <%= user.password %> -->
+					</p>
+
+			</div>
+		</div>
+
+		<% for(var i=0; i < user.length; i++) { %>
+			<div class="col-sm-8">
+				<div class="well">
+					<h3><span class="fa fa-user"></span> <%= user[i].file_name %> </h3>
+					<br>
+					
+					<p class="big">
+						<strong>uploader</strong>: <%= user[i].username %> <br>
+						<strong>transaction</strong>: <%= user[i].transaction %> <br>
+						<strong>upload at</strong>: <%= user[i].created_at %> <br>
+						<strong>download</strong>: <a href="/profile/<%= user[0].user_id %>/<%= user[0].file_name %>"> Link </Link:atom> </a> <br>
+						
+						<!-- <strong>password</strong>: <%= user.password %> -->
+					</p>
+					
+				</div>
+			</div>
+			<div class="col-sm-4"></div>
+		<% } %>
+
+	</div>
+	<br><br><br>
+
+	<footer>
+		<% include ./footer %>
+	</footer>
+</div>
+</body>
+</html>
