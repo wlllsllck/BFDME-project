@@ -13,10 +13,11 @@ module.exports = function(app, passport, connection) {
 	const web3 = require('./web3Client.js');
 	var algorithm = 'sha256';
 	var mkdirp = require('mkdirp');
-
+	
 	var multer = require('multer');
 	var init_path = path.resolve(".")+'/uploads/';
 	var resize = require('./resize');
+	var convert = require('./convert');
 	
 	var upload = multer({ dest:  init_path});
 	// var upload = multer({ dest: init_path });
@@ -194,9 +195,52 @@ module.exports = function(app, passport, connection) {
 	// =====================================
 	// FILTER ==============================
 	// =====================================
-	app.post('/filter', isLoggedIn, function (req,res) {
+	app.post('/profile/:userId/filter', isLoggedIn, function (req,res) {
 		console.log(req.body);
+		var month = convert(req.body.month);
+		var year = req.body.year;
+
+		if(year) {
+			if(month===''){
+				var date_filter = year + '-%';
+			}
+			else {
+				var date_filter = year + '-' + month + '-%';
+			}
+		}
+		else {
+			if(month===''){
+				var date_filter = '%';
+			}
+			else {
+				var date_filter = '%' + '-' + month + '-%';
+			}
+		}
+		var file_name = req.body.file_name;
+		console.log(date_filter);
+		console.log(file_name);
 		
+		var sql = 	"SELECT * FROM file_index WHERE user_id = " + req.user.id + " AND created_at LIKE '" + date_filter + "'"
+					+ " AND file_name LIKE '%" + file_name + "%'"; 
+		console.log(sql)
+		connection.query(sql, function(err, result) {
+
+			if(err)	throw err;
+			if(result.length) {
+				
+				res.render('profile.ejs', {
+						
+					user : result // get the user
+					//  out of session and pass to template
+					
+				});
+
+			}
+			else {
+				res.redirect('/profile/:userId/');	// fix tmr
+			}
+		});
+
 	});
 
 	// =====================================
