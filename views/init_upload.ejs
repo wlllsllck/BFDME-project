@@ -2,15 +2,28 @@
 <html>
 <head>
     <% include ./head %>
+    input[type=submit] {
+		width: 100%;
+		background-color: #00CC00;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+    }
+    input[type=submit]:hover {
+        background-color: #009900;
+    }
     </style>
     <script type="text/javascript" src= "/javascripts/upload.js"></script>
 </head>
 
 <body>
-<div class="container">
 	<header>
 		<% include ./init_header %>
     </header>
+<div class="container">
     
         <div class="row">
             <div class="col-xs-12">

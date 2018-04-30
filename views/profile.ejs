@@ -8,14 +8,29 @@
 		line-height: 1.8;
 	}
 	
-	</style>
+	input[type=submit] {
+		width: 100%;
+		background-color: #99FF99;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+    }
+    input[type=submit]:hover {
+        background-color: #66FF66;
+    }
+</style>
+<!-- <script type="text/javascript" src= "/javascripts/profile.js"></script> -->
 </head>
 
 <body>
-<div class="container">
 	<header>
 		<% include ./header %>
 	</header>
+				
+<div class="container">
 
 	<div class="page-header text-center">
 		<h1> Welcome <%= user[0].username %> </h1>
@@ -25,7 +40,8 @@
 	<div class="row">
 
 		<!-- LOCAL INFORMATION -->
-		<div class="col-sm-4 ">
+		<!-- left panel -->
+		<div class="col-xs-12 col-sm-6 col-md-4">
 			<div class="well">
 				<h3><span class="fa fa-user"></span> User Information </h3>
 
@@ -33,33 +49,58 @@
 						<strong>id</strong>: <%= user[0].user_id %><br>
 						<strong>username</strong>: <%= user[0].username %><br>
 						<strong>uploaded file</strong>: <%= user.length %><br>
-						<!-- <strong>password</strong>: <%= user.password %> -->
 					</p>
 
+			</div>
+			<div class="well">
+				<h3> Filter </h3>
+				<form action="/filter" class="FilterFile" method="post">
+					<div class="form-group">
+						<label> month </label>
+						<input type="text" class="form-control month" id="month" name="month">
+						<small class="form-text text-muted">ex. April, June, October, ...</small>
+					</div>
+					<div class="form-group">
+						<label> year </label>
+						<input type="text" class="form-control year" id="year" name="year">
+						<small class="form-text text-muted">ex. 2016, 2017, 2018, ...</small>	
+					</div>
+					<div class="form-group">
+						<label> file name </label>
+						<input type="text" class="form-control file_name" id="file_name" name="file_name">
+						<small class="form-text text-muted">ex. Hello.jpg, World.mp4, ...</small>	
+						</div>
+					<br>
+					<br>
+					<input type="submit" value="Filter">  
+				</form>
 			</div>
 		</div>
-
-		<% for(var i=0; i < user.length; i++) { %>
-			<div class="col-sm-8">
-				<div class="well">
-					<h3><span class="fa fa-user"></span> <%= user[i].file_name %> </h3>
-					<br>
-					
-					<p class="big">
-						<strong>uploader</strong>: <%= user[i].username %> <br>
-						<strong>transaction</strong>: <%= user[i].transaction %> <br>
-						<strong>upload at</strong>: <%= user[i].created_at %> <br>
-						<strong>download</strong>: <a href="/profile/<%= user[0].user_id %>/<%= user[0].file_name %>"> Link </Link:atom> </a> <br>
-						
-						<!-- <strong>password</strong>: <%= user.password %> -->
-					</p>
-					
-				</div>
+		<!-- DOWNLOAD LIST -->
+		<!-- right panel -->
+		<div class="col-xs-12 col-sm-6 col-md-8">
+			<% for(var i=0; i < user.length; i++) { %>
+			<div class="well">
+				<h4><span class="fa fa-user"></span> <%= user[i].file_name %> </h4>
+				<br>
+				<!-- <img src="../uploads/<%= user[i].username %>/<%= user[i].file_name %>" width="50" height="50">
+				<br>
+				<br> -->
+				<p class="big">
+					<strong>uploader</strong>: <%= user[i].username %> <br>
+					<strong>transaction</strong>: <%= user[i].transaction %> <br>
+					<strong>upload at</strong>: <%= user[i].created_at %> <br>
+					<!-- <strong>download</strong>: <a href="/profile/<%= user[0].user_id %>/<%= user[0].file_name %>"> Link </Link> </a> <br> -->
+					<!-- <strong>password</strong>: <%= user.password %> -->
+				</p>
+				<a class="btn btn-primary" href="/profile/<%= user[0].user_id %>/<%= user[0].file_name %>" role="button">Download</a>
+				<a class="btn btn-danger" href="#" role="button">Delete</a>
 			</div>
-			<div class="col-sm-4"></div>
-		<% } %>
+			<% } %>
+		</div>
+			
 
-	</div>
+</div>
 	<br><br><br>
 
 	<footer>

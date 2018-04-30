@@ -7,16 +7,16 @@
 	p.big {
 		line-height: 1.8;
 	}
-	
+    
 	</style>
 </head>
 
 <body>
+<header>
+    <% include ./init_header %>
+</header>
     <div class="container">
         <!-- init nav bar -->
-        <header>
-            <% include ./init_header %>
-        </header>
 
         <div class="page-header text-center">
                 <h1> Welcome <%= user.username %> </h1>

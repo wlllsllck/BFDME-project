@@ -1,24 +1,14 @@
 <!-- views/partials/header.ejs -->
-
-<nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-        
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
-                    Blockchain for Distributed Multimedia Evidences
-                </a>
-        
-                
-                
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/profile/<%= user[0].user_id %>/upload">Upload</a></li>
-                <li><a href="/profile/<%= user[0].user_id %>/verify">Verify</a></li>
+<section style="background: #34495e; color: rgba(255, 255, 255, 0.5);">
+        <h2>Blockchain for Distributed Multimedia Evidences</h2>
+        <nav class="circle">
+          <ul>
+                <li><a class="link-1" href="#">About</a></li>
+                <li><a class="link-1" href="/profile/<%= user[0].user_id %>/upload">Upload</a></li>
+                <li><a class="link-1" href="/profile/<%= user[0].user_id %>/verify">Verify</a></li>
                 <!-- <li> <%= user.username %> </li> -->
-                <li><a href="/profile/<%= user[0].user_id %>"> <%= user[0].username %> </a></li>
-                <li><a href="/logout"> Log out </a></li>
-            </ul>
-            
-        </div>
-</nav>
+                <li><a class="link-1" href="/profile/<%= user[0].user_id %>"> <%= user[0].username %> </a></li>
+                <li><a class="link-1" href="/logout"> Log out </a></li>
+          </ul>
+        </nav>
+</section>
