@@ -237,7 +237,11 @@ module.exports = function(app, passport, connection) {
 
 			}
 			else {
-				res.redirect('/profile/:userId/');	// fix tmr
+				// var redirect_path = '/profile/' + req.user.id;
+				// res.redirect(redirect_path);	// fix tmr
+				res.render('filter_notfound.ejs', {
+					user : req.user
+				});
 			}
 		});
 
