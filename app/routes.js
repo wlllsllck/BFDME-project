@@ -5,7 +5,7 @@ module.exports = function(app, passport, connection) {
 	// =====================================
 	
 	var path = require('path');
-	var formidable = require('formidable');
+	// var formidable = require('formidable');
 	var fs = require('fs');
 	var http = require('http');
 	var crypto = require('crypto');
